@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Josefin+Sans:wght@300;400;600;700&display=swap');
+@import 'tailwindcss';
+
+@theme {
+  --color-matcha: #5B7034;
+  --color-matcha-dark: #3d4d22;
+  --color-orange: #D85A27;
+  --color-orange-dark: #E65100;
+  --color-cream: #FAF8F5;
+  --color-charcoal: #2D2D2D;
+  --font-script: 'Great Vibes', cursive;
+  --font-sans: 'Josefin Sans', sans-serif;
+}
+
+* {
+  scrollbar-width: none;
+}
+*::-webkit-scrollbar {
+  display: none;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Josefin Sans', sans-serif;
+  background-color: #FAF8F5;
+  color: #2D2D2D;
+}
+
+.font-script {
+  font-family: 'Great Vibes', cursive;
+}
+
+.font-josefin {
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+@keyframes ticker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.ticker-track {
+  display: flex;
+  width: max-content;
+  animation: ticker 18s linear infinite;
+}
+
+.ticker-track:hover {
+  animation-play-state: paused;
+}

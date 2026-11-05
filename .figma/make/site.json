@@ -1,0 +1,10 @@
+{
+  "description": "A user-friendly React app that delivers dynamic, responsive interfaces to enhance user engagement and streamline interactions across devices.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
