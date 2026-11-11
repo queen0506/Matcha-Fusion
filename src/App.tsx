@@ -164,10 +164,10 @@ function LandingSection() {
         <h1 className="font-script text-white mb-3" style={{ fontSize: "clamp(3rem, 8vw, 6rem)", textShadow: "0 2px 20px rgba(0,0,0,0.4)" }}>
           Matcha Fusion
         </h1>
-        <p className="font-josefin text-white text-base tracking-widest uppercase mb-6" style={{ letterSpacing: "0.25em", opacity: 0.9 }}>
-          A World of Flavor in Every Sip
+        <p className="font-josefin text-white text-base tracking-widest uppercase mb-6" style={{ letterSpacing: "0.25em", opacity: 1 }}>
+          A  World  of  Flavor  in  Every  Sip
         </p>
-        <p className="font-josefin text-white text-base max-w-lg mb-10 leading-relaxed" style={{ opacity: 0.88 }}>
+        <p className="font-josefin text-white text-base max-w-lg mb-10 leading-relaxed" style={{ opacity: 1 }}>
           Experience Japanese matcha tradition infused with bold global flavors. Crafting unique drinks that bring culture, creativity, and connection to every cup.
         </p>
         <a
@@ -206,7 +206,7 @@ function HomeSection() {
       </div>
       <div className="max-w-3xl mx-auto text-center px-6 py-16">
         <h2 className="font-script mb-6" style={{ fontSize: "clamp(2.5rem, 6vw, 4rem)", color: "#D85A27" }}>
-          A World of Flavor in Every Sip
+          A   World   of   Flavor   in   Every   Sip
         </h2>
         <p className="font-josefin text-base leading-loose" style={{ color: "#2D2D2D", opacity: 0.82 }}>
           Where culture and creativity blend in every cup. Inspired by Japan's timeless matcha traditions, Matcha Fusion brings you unique signature drinks crafted with vibrant global flavors. Experience a journey of taste and connection with every sip.
