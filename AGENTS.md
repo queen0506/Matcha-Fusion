@@ -1,4 +1,4 @@
-# figma-make-app
+# Matcha Fusion
 
 React + Vite + Tailwind CSS project running inside Figma Make.
 

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import greenLogo from "@/imports/green_logo.png";
 import whiteLogo from "@/imports/white_logo.png";
+import matchaD from "@/imports/matcha-d.png";
 
 const NAV_LINKS = [
   { label: "Home", href: "#home" },
@@ -12,39 +13,39 @@ const NAV_LINKS = [
 const PRODUCTS = [
   {
     name: "Strawberry Matcha",
-    desc: "Sweet strawberry purée layered with cold milk and whisked matcha. Fruity, fresh, and beautifully balanced.",
-    img: "https://images.unsplash.com/photo-1751033390078-b605c8727fa4?w=400&h=400&fit=crop&auto=format",
+    description: "Sweet strawberry purée layered with cold milk and whisked matcha. Fruity, fresh, and beautifully balanced.",
+    image: "https://images.unsplash.com/photo-1751033390078-b605c8727fa4?w=400&h=400&fit=crop&auto=format",
     alt: "Layered strawberry matcha drink",
   },
   {
     name: "Matcha Latte",
-    desc: "Smooth green tea mixed with cold milk. Simple, earthy, and perfectly balanced.",
-    img: "https://images.unsplash.com/photo-1631308491952-040f80133535?w=400&h=400&fit=crop&auto=format",
+    description: "Smooth green tea mixed with cold milk. Simple, earthy, and perfectly balanced.",
+    image: "https://images.unsplash.com/photo-1631308491952-040f80133535?w=400&h=400&fit=crop&auto=format",
     alt: "Classic matcha latte",
   },
   {
     name: "Ube Matcha",
-    desc: "Rich ube milk topped with vibrant green tea. Sweet, nutty, and velvety smooth.",
-    img: "https://images.unsplash.com/photo-1751033390130-cdc5a6082089?w=400&h=400&fit=crop&auto=format",
+    description: "Rich ube milk topped with vibrant green tea. Sweet, nutty, and velvety smooth.",
+    image: "https://images.unsplash.com/photo-1751033390130-cdc5a6082089?w=400&h=400&fit=crop&auto=format",
     alt: "Layered ube matcha drink",
   },
   {
     name: "Dirty Matcha",
-    desc: "A bold shot of espresso mixed with earthy matcha and cold milk. Deep, rich, and energizing.",
-    img: "https://images.unsplash.com/photo-1727850005779-1e24cac382d4?w=400&h=400&fit=crop&auto=format",
+    description: "A bold shot of espresso mixed with earthy matcha and cold milk. Deep, rich, and energizing.",
+    image: "https://images.unsplash.com/photo-1727850005779-1e24cac382d4?w=400&h=400&fit=crop&auto=format",
     alt: "Dirty matcha with espresso",
   },
 ];
 
-function Logo({ size = 56 }: { size?: number }) {
+function Logo({ size = 56, variant = "green" }: { size?: number; variant?: "green" | "white" }) {
   return (
-    <img src={greenLogo} alt="Matcha Fusion logo" width={size} height={size} style={{ objectFit: "contain" }} />
-  );
-}
-
-function LogoWhite({ size = 56 }: { size?: number }) {
-  return (
-    <img src={whiteLogo} alt="Matcha Fusion logo" width={size} height={size} style={{ objectFit: "contain" }} />
+    <img
+      src={variant === "white" ? whiteLogo : greenLogo}
+      alt="Matcha Fusion logo"
+      width={size}
+      height={size}
+      style={{ objectFit: "contain" }}
+    />
   );
 }
 
@@ -132,9 +133,9 @@ function TickerBanner() {
         {content.map((_, i) => (
           <span key={i} className="flex items-center gap-6 px-6 whitespace-nowrap">
             <span className="font-script text-white text-2xl">Matcha Fusion</span>
-            <LogoWhite size={28} />
+            <Logo size={28} variant="white" />
             <span className="font-script text-white text-2xl">A World of Flavor in Every Sip</span>
-            <LogoWhite size={28} />
+            <Logo size={28} variant="white" />
           </span>
         ))}
       </div>
@@ -158,7 +159,7 @@ function LandingSection() {
       <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.55) 100%)" }} />
       <div className="relative z-10 flex-1 flex flex-col items-center justify-center text-center px-6 py-32">
         <div className="mb-6">
-          <LogoWhite size={90} />
+          <Logo size={90} variant="white" />
         </div>
         <h1 className="font-script text-white mb-3" style={{ fontSize: "clamp(3rem, 8vw, 6rem)", textShadow: "0 2px 20px rgba(0,0,0,0.4)" }}>
           Matcha Fusion
@@ -197,7 +198,7 @@ function HomeSection() {
         style={{ height: "clamp(240px, 40vw, 420px)", background: "#2d3a1a" }}
       >
         <img
-          src="https://images.unsplash.com/photo-1582785513054-8d1bf9d69c1a?w=1400&h=500&fit=crop&auto=format"
+          src={matchaD}
           alt="Liquid matcha texture swirling"
           className="w-full h-full object-cover"
           style={{ objectPosition: "center 30%" }}
@@ -228,24 +229,24 @@ function OurMatchaSection() {
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-y-16 gap-x-12">
-          {PRODUCTS.map((p) => (
-            <div key={p.name} className="flex items-start gap-7 group">
+          {PRODUCTS.map((product) => (
+            <div key={product.name} className="flex items-start gap-7 group">
               <div
                 className="flex-shrink-0 rounded-2xl overflow-hidden transition-transform duration-300 group-hover:scale-105"
                 style={{ width: 160, height: 160, background: "#e0ead0", boxShadow: "0 8px 32px rgba(91,112,52,0.12)" }}
               >
                 <img
-                  src={p.img}
-                  alt={p.alt}
+                  src={product.image}
+                  alt={product.alt}
                   className="w-full h-full object-cover"
                 />
               </div>
               <div className="pt-2">
                 <h3 className="font-josefin font-700 text-lg mb-3 tracking-wide" style={{ color: "#D85A27" }}>
-                  {p.name}
+                  {product.name}
                 </h3>
                 <p className="font-josefin text-sm leading-relaxed" style={{ color: "#2D2D2D", opacity: 0.78, maxWidth: 260 }}>
-                  {p.desc}
+                  {product.description}
                 </p>
               </div>
             </div>

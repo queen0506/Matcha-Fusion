@@ -19,10 +19,10 @@ export default defineConfig(({ mode }) => {
     plugins: [
       react(),
       tailwindcss(),
-      figmaSiteConfiguration(siteConfiguration),
-      figmaErrorOverlayReplay(),
-      figmaReactRefreshBoundaryFallback(),
-      figmaMakeKitPlugin({ storiesGlob: '/src/**/*.stories.{ts,tsx,js,jsx}' }),
+      siteConfigurationPlugin(siteConfiguration),
+      errorOverlayReplayPlugin(),
+      reactRefreshBoundaryFallbackPlugin(),
+      storyRenderTargetPlugin({ storiesGlob: '/src/**/*.stories.{ts,tsx,js,jsx}' }),
     ],
     resolve: {
       alias: {
@@ -46,7 +46,7 @@ export default defineConfig(({ mode }) => {
   }
 })
 
-type FigmaSiteConfiguration = {
+type SiteConfiguration = {
   title?: string
   description?: string
   language?: string
@@ -73,8 +73,8 @@ type FigmaSiteConfiguration = {
   }
 }
 
-/** Applies /.figma/make/site.json to the generated document shell. */
-function figmaSiteConfiguration(config: FigmaSiteConfiguration): Plugin {
+/** Applies site metadata to the generated document shell. */
+function siteConfigurationPlugin(config: SiteConfiguration): Plugin {
   function sanitizeHtmlValue(value: string | undefined): string {
     return value?.replace(/[^a-zA-Z0-9_-]/g, '') || ''
   }
@@ -85,7 +85,7 @@ function figmaSiteConfiguration(config: FigmaSiteConfiguration): Plugin {
     return html.replace(`<!-- ${slotName} -->`, content)
   }
 
-  const title = config.title ?? "Figma Make App"
+  const title = config.title ?? "Matcha Fusion"
   const description = config.description ?? ''
   const favicon = config.icons?.icon ?? ''
   const socialImage = config.openGraph?.image ?? ''
@@ -98,7 +98,7 @@ function figmaSiteConfiguration(config: FigmaSiteConfiguration): Plugin {
   const robotsTxt = config.robots?.index === false ? 'User-agent: *\nDisallow: /\n' : ''
 
   return {
-    name: 'figma-site-configuration',
+    name: 'site-configuration',
     configureServer(server) {
       server.middlewares.use((req, res, next) => {
         if (!robotsTxt || req.url?.split('?')[0] !== '/robots.txt') return next()
@@ -179,7 +179,7 @@ function figmaSiteConfiguration(config: FigmaSiteConfiguration): Plugin {
             {
               tag: 'style',
               children: `
-  .figma-bypass-link {
+  .skip-link {
     position: fixed;
     top: 8px;
     left: 8px;
@@ -192,7 +192,7 @@ function figmaSiteConfiguration(config: FigmaSiteConfiguration): Plugin {
     font: 600 14px/1.2 system-ui, sans-serif;
     text-decoration: none;
   }
-  .figma-bypass-link:focus {
+  .skip-link:focus {
     transform: translateY(0);
   }
 `,
@@ -200,7 +200,7 @@ function figmaSiteConfiguration(config: FigmaSiteConfiguration): Plugin {
             },
             {
               tag: 'a',
-              attrs: { class: 'figma-bypass-link', href: '#root' },
+              attrs: { class: 'skip-link', href: '#root' },
               children: 'Skip to content',
               injectTo: 'body-prepend',
             },
@@ -229,9 +229,9 @@ function figmaSiteConfiguration(config: FigmaSiteConfiguration): Plugin {
  * `update` or `full-reload` so a stale overlay can't survive a
  * fixed build.
  */
-function figmaErrorOverlayReplay(): Plugin {
+function errorOverlayReplayPlugin(): Plugin {
   return {
-    name: 'figma-error-overlay-replay',
+    name: 'error-overlay-replay',
     apply: 'serve',
     configureServer(server) {
       let lastError: object | null = null
@@ -271,12 +271,12 @@ function figmaErrorOverlayReplay(): Plugin {
  * mounted component family. React reports a successful refresh while leaving
  * the old tree mounted until the page is reloaded.
  */
-function figmaReactRefreshBoundaryFallback(): Plugin {
+function reactRefreshBoundaryFallbackPlugin(): Plugin {
   const hadRefreshBoundary = new Map<string, boolean>()
   let sendFullReload: (() => void) | null = null
 
   return {
-    name: 'figma-react-refresh-boundary-fallback',
+    name: 'react-refresh-boundary-fallback',
     apply: 'serve',
     enforce: 'post',
     configureServer(server) {
@@ -301,16 +301,16 @@ function figmaReactRefreshBoundaryFallback(): Plugin {
 
 /**
  * Serves a blank render-target page at /.figma/make/kit.html that
- * the Figma preview script drives directly. The page exposes a
+ * the preview script drives directly. The page exposes a
  * registry of every file matching `storiesGlob` on
- * window.__FIGMA__.stories so the design surface can dynamically
+ * window.__FIGMA__.stories so the preview can dynamically
  * import + mount each entry into its own grid view.
  *
  * Dev-only: `apply: 'serve'` gates the plugin to `vite dev`. Prod
  * builds (`vite build`) skip it entirely so the route doesn't leak
  * into shipped bundles.
  */
-function figmaMakeKitPlugin(options: { storiesGlob: string | string[] }): Plugin {
+function storyRenderTargetPlugin(options: { storiesGlob: string | string[] }): Plugin {
   const storiesGlob = Array.isArray(options.storiesGlob) ? options.storiesGlob : [options.storiesGlob]
   const ROUTE = '/.figma/make/kit.html'
   const VIRTUAL_ID = 'virtual:figma-stories'
@@ -333,7 +333,7 @@ function figmaMakeKitPlugin(options: { storiesGlob: string | string[] }): Plugin
 </html>`
 
   return {
-    name: 'figma-make-kit',
+    name: 'story-render-target',
     apply: 'serve',
     resolveId(id) {
       if (id === VIRTUAL_ID) return RESOLVED_ID

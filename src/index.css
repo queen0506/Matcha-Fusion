@@ -3,10 +3,6 @@
 
 @theme {
   --color-matcha: #5B7034;
-  --color-matcha-dark: #3d4d22;
-  --color-orange: #D85A27;
-  --color-orange-dark: #E65100;
-  --color-cream: #FAF8F5;
   --color-charcoal: #2D2D2D;
   --font-script: 'Great Vibes', cursive;
   --font-sans: 'Josefin Sans', sans-serif;
@@ -27,10 +23,6 @@ body {
   font-family: 'Josefin Sans', sans-serif;
   background-color: #FAF8F5;
   color: #2D2D2D;
-}
-
-.font-script {
-  font-family: 'Great Vibes', cursive;
 }
 
 .font-josefin {
