@@ -3,6 +3,7 @@ import BrandLogo from "@/components/common/BrandLogo"
 import Navbar from "@/components/layout/Navbar"
 
 import matchaD from "@/assets/images/matcha-d.png"
+import boothPicture from "@/assets/images/booth_picture.jpg"
 
 const PRODUCTS = [
   {
@@ -267,115 +268,124 @@ function BrandingSection() {
           Branding
         </h2>
 
-        {/* Logo + Fonts row */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
-          {/* Logo column */}
-          <div className="flex flex-col gap-6">
-            <div className="flex items-start gap-6">
-              <div className="flex-shrink-0">
-                <BrandLogo size={120} />
-              </div>
-              <div>
-                <h3
-                  className="font-josefin font-700 text-xl mb-3"
-                  style={{ color: "#2D2D2D" }}
-                >
-                  Logo
-                </h3>
-                <p
-                  className="font-josefin text-sm leading-relaxed mb-3"
-                  style={{ color: "#2D2D2D", opacity: 0.78 }}
-                >
-                  The{" "}
-                  <span style={{ color: "#D85A27" }} className="font-600">
-                    Matcha Fusion
-                  </span>{" "}
-                  logo pairs earthy green and warm orange tones with a
-                  traditional Japanese whisk to represent nature, vitality, and
-                  authentic craftsmanship.
-                </p>
-                <p
-                  className="font-josefin text-sm leading-relaxed"
-                  style={{ color: "#2D2D2D", opacity: 0.75 }}
-                >
-                  Below it, a globe-shaped bowl, a circular frame, the tagline{" "}
-                  <span style={{ color: "#D85A27" }}>
-                    "A World of Flavor in Every Sip,"
-                  </span>{" "}
-                  and a curved brand banner combine to symbolize cultural unity
-                  and the fusion of global flavors.
-                </p>
-              </div>
-            </div>
+        {/* Logos */}
+        <div className="mx-auto mb-16 max-w-3xl text-center">
+          <h3
+            className="font-josefin font-700 text-xl mb-3"
+            style={{ color: "#2D2D2D" }}
+          >
+            Logo
+          </h3>
+          <div
+            className="mx-auto mb-5 h-1 w-12 rounded-full"
+            style={{ background: "#D85A27" }}
+          />
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10">
+          <div className="flex min-h-[180px] items-center justify-center">
+            <BrandLogo size={120} variant="green" />
           </div>
+          <div className="flex min-h-[180px] items-center justify-center">
+            <BrandLogo size={120} variant="colored" />
+          </div>
+          <div className="flex min-h-[180px] items-center justify-center">
+            <BrandLogo size={120} variant="orange" />
+          </div>
+        </div>
 
-          {/* Fonts column */}
-          <div>
-            <h3
-              className="font-josefin font-700 text-xl mb-6 text-right"
-              style={{ color: "#2D2D2D" }}
-            >
-              Fonts Used
-            </h3>
-            <div
-              className="h-px mb-6"
-              style={{ background: "#5B7034", opacity: 0.2 }}
-            />
-            <div className="flex flex-col gap-6 items-end text-right">
-              <div>
-                <p
-                  className="font-josefin tracking-widest text-xl font-700"
-                  style={{ color: "#2D2D2D", letterSpacing: "0.3em" }}
-                >
-                  JOSEFIN SANS
-                </p>
-                <p
-                  className="font-josefin text-xs tracking-widest mt-1"
-                  style={{
-                    color: "#2D2D2D",
-                    opacity: 0.5,
-                    letterSpacing: "0.15em",
-                  }}
-                >
-                  BODY & NAVIGATION
-                </p>
-              </div>
-              <div>
-                <p
-                  className="font-script text-3xl"
-                  style={{ color: "#2D2D2D" }}
-                >
-                  Great Vibes
-                </p>
-                <p
-                  className="font-josefin text-xs tracking-widest mt-1"
-                  style={{
-                    color: "#2D2D2D",
-                    opacity: 0.5,
-                    letterSpacing: "0.15em",
-                  }}
-                >
-                  DISPLAY HEADINGS
-                </p>
-              </div>
-              <div>
-                <p
-                  className="font-script text-2xl"
-                  style={{ color: "#5B7034" }}
-                >
-                  Formale Script
-                </p>
-                <p
-                  className="font-josefin text-xs tracking-widest mt-1"
-                  style={{
-                    color: "#2D2D2D",
-                    opacity: 0.5,
-                    letterSpacing: "0.15em",
-                  }}
-                >
-                  ACCENT SCRIPT
-                </p>
-              </div>
+        <div className="mx-auto mb-16 max-w-3xl text-center">
+          
+          <p
+            className="font-josefin text-sm leading-relaxed mb-3"
+            style={{ color: "#2D2D2D", opacity: 0.78 }}
+          >
+            The{" "}
+            <span style={{ color: "#D85A27" }} className="font-600">
+              Matcha Fusion
+            </span>{" "}
+            logo pairs earthy green and warm orange tones with a traditional
+            Japanese whisk to represent nature, vitality, and authentic
+            craftsmanship.
+          </p>
+          <p
+            className="font-josefin text-sm leading-relaxed"
+            style={{ color: "#2D2D2D", opacity: 0.75 }}
+          >
+            Below it, a globe-shaped bowl, a circular frame, the tagline{" "}
+            <span style={{ color: "#D85A27" }}>
+              "A World of Flavor in Every Sip,"
+            </span>{" "}
+            and a curved brand banner combine to symbolize cultural unity and
+            the fusion of global flavors.
+          </p>
+        </div>
+
+        {/* Fonts */}
+        <div className="mb-16">
+          <h3
+            className="font-josefin font-700 text-xl mb-6 text-center"
+            style={{ color: "#2D2D2D" }}
+          >
+            Fonts Used
+          </h3>
+          <div
+            className="mx-auto mb-8 h-1 w-12 rounded-full"
+            style={{ background: "#D85A27", opacity: 0.75 }}
+          />
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
+            <div className="flex min-h-[144px] flex-col items-center justify-center px-5 py-8">
+              <p
+                className="font-josefin tracking-widest text-xl font-700"
+                style={{ color: "#2D2D2D", letterSpacing: "0.3em" }}
+              >
+                JOSEFIN SANS
+              </p>
+              <p
+                className="font-josefin text-xs tracking-widest mt-1"
+                style={{
+                  color: "#2D2D2D",
+                  opacity: 0.5,
+                  letterSpacing: "0.15em",
+                }}
+              >
+                BODY & NAVIGATION
+              </p>
+            </div>
+            <div className="flex min-h-[144px] flex-col items-center justify-center px-5 py-8">
+              <p
+                className="font-script text-3xl"
+                style={{ color: "#2D2D2D" }}
+              >
+                Great Vibes
+              </p>
+              <p
+                className="font-josefin text-xs tracking-widest mt-1"
+                style={{
+                  color: "#2D2D2D",
+                  opacity: 0.5,
+                  letterSpacing: "0.15em",
+                }}
+              >
+                DISPLAY HEADINGS
+              </p>
+            </div>
+            <div className="flex min-h-[144px] flex-col items-center justify-center px-5 py-8">
+              <p
+                className="font-script text-2xl"
+                style={{ color: "#5B7034" }}
+              >
+                Formale Script
+              </p>
+              <p
+                className="font-josefin text-xs tracking-widest mt-1"
+                style={{
+                  color: "#2D2D2D",
+                  opacity: 0.5,
+                  letterSpacing: "0.15em",
+                }}
+              >
+                ACCENT SCRIPT
+              </p>
             </div>
           </div>
         </div>
@@ -423,7 +433,7 @@ function BrandingSection() {
             }}
           >
             <img
-              src="https://images.unsplash.com/photo-1757507423608-ae47cddef75f?w=700&h=480&fit=crop&auto=format"
+              src={boothPicture}
               alt="Japanese tea house — kiosk storefront reference"
               className="w-full h-full object-cover"
               style={{ minHeight: 280 }}
