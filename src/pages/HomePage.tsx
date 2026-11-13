@@ -53,6 +53,46 @@ const PRODUCTS = [
 
     alt: "Dirty matcha with espresso",
   },
+
+  {
+    name: "Blueberry Matcha",
+
+    description: "A refreshing blend of earthy matcha and sweet, fruity blueberry for a perfectly balanced flavor.",
+
+    image: "https://images.unsplash.com/photo-1749104028327-a33087ea4f47?q=80&w=628&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D",
+
+    alt: "Matcha with blueberry flavor",
+  },
+
+  {
+    name: "Mango Matcha",
+
+    description: "A tropical fusion of rich matcha and juicy mango, delivering a smooth and refreshing taste",
+
+    image: "https://images.unsplash.com/photo-1792855383218-32d037a3b6f4?q=80&w=677&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D",
+
+    alt: "Matcha with sweet mango",
+  },
+
+  {
+    name: "Pistachio Matcha",
+
+    description: "A creamy combination of premium matcha and nutty pistachio for a rich, smooth experience.",
+
+    image: "https://images.unsplash.com/photo-1705862667467-45491f498cc4?q=80&w=747&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D",
+
+    alt: "Creamy pistachio matcha",
+  },
+
+  {
+    name: "Honey Matcha",
+
+    description: "A delightful blend of earthy matcha and natural honey, offering a smooth sweetness in every sip.",
+
+    image: " https://images.unsplash.com/photo-1771405317813-777a73ab0f43?q=80&w=696&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D",
+
+    alt: "Matcha sweetened with honey",
+  },
 ]
 
 function TickerBanner() {
@@ -225,11 +265,20 @@ function OurMatchaSection() {
                   boxShadow: "0 8px 32px rgba(91,112,52,0.12)",
                 }}
               >
-                <img
-                  src={product.image}
-                  alt={product.alt}
-                  className="w-full h-full object-cover"
-                />
+                {product.image ? (
+                  <img
+                    src={product.image}
+                    alt={product.alt}
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  <div
+                    className="flex h-full w-full items-center justify-center font-josefin text-xs tracking-widest uppercase"
+                    style={{ color: "#5B7034" }}
+                  >
+                    Add image
+                  </div>
+                )}
               </div>
               <div className="pt-2">
                 <h3
