@@ -89,7 +89,7 @@ const PRODUCTS = [
 
     description: "A delightful blend of earthy matcha and natural honey, offering a smooth sweetness in every sip.",
 
-    image: " https://images.unsplash.com/photo-1771405317813-777a73ab0f43?q=80&w=696&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D",
+    image: "https://images.unsplash.com/photo-1771405317813-777a73ab0f43?q=80&w=696&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D",
 
     alt: "Matcha sweetened with honey",
   },
